@@ -78,7 +78,7 @@ int MPU9250::begin(){
     return -4;
   }
   // check the WHO AM I byte, expected value is 0x71 (decimal 113) or 0x73 (decimal 115)
-  if((whoAmI() != 113)&&(whoAmI() != 115)){
+  if((whoAmI() != 112)&&(whoAmI() != 113)&&(whoAmI() != 115)){
     return -5;
   }
   // enable accelerometer and gyro
@@ -118,11 +118,12 @@ int MPU9250::begin(){
 	if( writeRegister(I2C_MST_CTRL,I2C_MST_CLK) < 0){
 		return -13;
 	}
+  /*
 	// check AK8963 WHO AM I register, expected value is 0x48 (decimal 72)
 	if( whoAmIAK8963() != 72 ){
     return -14;
 	}
-  /* get the magnetometer calibration */
+  // get the magnetometer calibration 
   // set AK8963 to Power Down
   if(writeAK8963Register(AK8963_CNTL1,AK8963_PWR_DOWN) < 0){
     return -15;
@@ -159,6 +160,7 @@ int MPU9250::begin(){
     return -20;
   }
   // successful init, return 1
+  */
   return 1;
 }
 
